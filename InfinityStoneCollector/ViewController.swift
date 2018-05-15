@@ -19,12 +19,6 @@ class ViewController: UIViewController {
     var Red : Int = 0
     var Orange : Int = 0
     var Yellow : Int = 0
-    var Purple1 : Int = 0
-    var Blue1 : Int = 0
-    var Green1 : Int = 0
-    var Red1 : Int = 0
-    var Orange1 : Int = 0
-    var Yellow1 : Int = 0
     var AnimationPerformedOnce = false
     
     
@@ -36,30 +30,36 @@ class ViewController: UIViewController {
         
         
         if(Stone == 0)
-        {
+        {   if(Purple == 0){
+            
+            
             UIView.animate(withDuration: 0.5, animations: {
                 self.VC.backgroundColor = UIColor.purple
             }, completion: nil)
             
             TextField.text = (" Thanos has obtained the Power Stone")
             
-            
+            myArray.append(TextField.text!)
             Purple = 1
             
             
             print("Purple")
             
             
-            
+        }
         }
         else if(Stone == 1)
         {
+            if(Blue == 0)
+                {
+                    
+            
             UIView.animate(withDuration: 0.5, animations: {
                 self.VC.backgroundColor = UIColor.blue
             }, completion: nil)
             
             TextField.text = (" Thanos has obtained the Space Stone")
-            
+            myArray.append(TextField.text!)
             
             Blue = 1
             
@@ -67,55 +67,60 @@ class ViewController: UIViewController {
             
             print("Blue")
             
-        }
+            }}
         else if(Stone == 2)
         {
+            if(Green == 0)
+            {
             UIView.animate(withDuration: 0.5, animations: {
                 self.VC.backgroundColor = UIColor.green
             }, completion: nil)
             TextField.text = (" Thanos has obtained the Time Stone")
-            
+            myArray.append(TextField.text!)
             
             Green = 1
             print("Green")
             
-        }
+            }}
         else if(Stone == 3)
+        {if(Red == 0)
         {
             UIView.animate(withDuration: 0.5, animations: {
                 self.VC.backgroundColor = UIColor.red
             }, completion: nil)
             TextField.text = (" Thanos has obtained the Reality Stone")
             
-            
+            myArray.append(TextField.text!)
             Red = 1
             print("Red")
             
-        }
+            }}
         else if(Stone == 4)
+        {if(Orange == 0)
         {
             UIView.animate(withDuration: 0.5, animations: {
                 self.VC.backgroundColor = UIColor.orange
             }, completion: nil)
             TextField.text = (" Thanos has obtained the Soul Stone")
-            
+            myArray.append(TextField.text!)
             
             Orange = 1
             print("Orange")
             
-        }
+            }}
         else if(Stone == 5)
+        {if(Yellow == 0)
         {
             UIView.animate(withDuration: 0.5, animations: {
                 self.VC.backgroundColor = UIColor.yellow
             }, completion: nil)
             TextField.text = (" Thanos has obtained the Mind Stone")
-            
+            myArray.append(TextField.text!)
             
             Yellow = 1
             print("Yellow")
             
-        }
+            }}
         
         if(Red + Green + Blue + Yellow + Purple + Orange == 6)
         {
@@ -123,63 +128,7 @@ class ViewController: UIViewController {
             Alert(title: "Mission Complete", message: "Thanos has obtained all Infinity Stones")
         }
         
-        
-        if let Text = TextField.text
-        {
-            if(Text == " Thanos has obtained the Reality Stone")
-            {
-                if(Red1 == 0)
-                {
-                    myArray.append(Text)
-                    Red1 += 1
-                }
-            }
-            if(Text == " Thanos has obtained the Power Stone")
-            {
-                if(Purple1 == 0)
-                {
-                    myArray.append(Text)
-                    Purple1 += 1
-                }
-            }
-            if(Text == " Thanos has obtained the Space Stone")
-            {
-                if(Blue1 == 0)
-                {
-                    myArray.append(Text)
-                    Blue1 += 1
-                }
-            }
-            if(Text == " Thanos has obtained the Mind Stone")
-            {
-                if(Yellow1 == 0)
-                {
-                    myArray.append(Text)
-                    Yellow1 += 1
-                }
-            }
-            if(Text == " Thanos has obtained the Soul Stone")
-            {
-                if(Orange1 == 0)
-                {
-                    myArray.append(Text)
-                    Orange1 += 1
-                }
-            }
-            if(Text == " Thanos has obtained the Time Stone")
-            {
-                if(Green1 == 0)
-                {
-                    myArray.append(Text)
-                    Green1 += 1
-                }
-            }
-            
-            
-            
-            
-        }
-        
+   
     }
     func Alert (title:String , message:String)
     {
