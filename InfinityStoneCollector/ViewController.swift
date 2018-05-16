@@ -12,6 +12,7 @@ var Number : Int = 1
 var myArray = [String]()
 var row : Int = 0
 
+
 class ViewController: UIViewController {
     var Purple : Int = 0
     var Blue : Int = 0
@@ -20,47 +21,32 @@ class ViewController: UIViewController {
     var Orange : Int = 0
     var Yellow : Int = 0
     var AnimationPerformedOnce = false
-    
+    var From : Int = 0
+    var To: Int = 5
+    var Array = [Int]()
+    var I = 0
     
     @IBAction func Action(_ sender: Any) {
-        Stone = Int(arc4random_uniform(6))
-        
-        
-        
-        
-        
+        Stone = Array[I]
         if(Stone == 0)
         {   if(Purple == 0){
-            
-            
             UIView.animate(withDuration: 0.5, animations: {
-                self.VC.backgroundColor = UIColor.purple
-            }, completion: nil)
-            
+            self.VC.backgroundColor = UIColor.purple
+        }, completion: nil)
             TextField.text = (" Thanos has obtained the Power Stone")
-            
             myArray.append(TextField.text!)
             Purple = 1
-            
-            
             print("Purple")
-            
-            
         }
         }
         else if(Stone == 1)
         {
-            if(Blue == 0)
-                {
-                    
-            
+            if(Blue == 0){
             UIView.animate(withDuration: 0.5, animations: {
-                self.VC.backgroundColor = UIColor.blue
+            self.VC.backgroundColor = UIColor.blue
             }, completion: nil)
-            
             TextField.text = (" Thanos has obtained the Space Stone")
             myArray.append(TextField.text!)
-            
             Blue = 1
             
             
@@ -128,7 +114,10 @@ class ViewController: UIViewController {
             Alert(title: "Mission Complete", message: "Thanos has obtained all Infinity Stones")
         }
         
-   
+         if(I != 5)
+         {
+         I += 1
+        }
     }
     func Alert (title:String , message:String)
     {
@@ -152,6 +141,9 @@ class ViewController: UIViewController {
             self.VC.backgroundColor = UIColor.white
             print("Done")
         }, completion: nil)
+        Array.removeAll()
+        GenerateRandomNumber(From, To, nil)
+        I = 0
     }
     
     @IBOutlet weak var ImageView: UIImageView!
@@ -165,6 +157,35 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var TextField: UITextField!
     
+    func GenerateRandomNumber ( _ from:Int, _ to:Int,   _ qut:Int?) -> [Int]
+    {
+        var MyRandomNumber = [Int]()
+        var NumberofNumbers = qut
+        let lower = UInt32(from)
+        let higher = UInt32(to+1)
+        if(NumberofNumbers == nil || NumberofNumbers! >  (to-from) + 1)
+        {
+            NumberofNumbers = (to-from) + 1
+            
+        }
+        while MyRandomNumber.count != NumberofNumbers
+        {
+            let MyNumber = arc4random_uniform(higher-lower) + lower
+            if !MyRandomNumber.contains(Int(MyNumber))
+            {
+                MyRandomNumber.append(Int(MyNumber))
+                Array.append(Int(MyNumber))
+            }
+            
+        }
+        print(MyRandomNumber)
+        
+        return MyRandomNumber
+        
+        
+        
+    }
+    
     
     
     
@@ -172,6 +193,12 @@ class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        GenerateRandomNumber(From, To, nil)
+        
+        
+        
+        
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
